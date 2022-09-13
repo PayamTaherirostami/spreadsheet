@@ -1,23 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
-
+import { useState} from 'react'
+import {SpreadsheetComponent,RangeDirective,RangesDirective,SheetDirective,SheetsDirective} from '@syncfusion/ej2-react-spreadsheet';
+import {defaultData} from'./data';
 function App() {
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+ <SpreadsheetComponent allowOpen={true}
+        openUrl="https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/open"
+        allowSave={true}
+        saveUrl="https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/save">
+<SheetsDirective>
+  <SheetDirective>
+    <RangesDirective>
+      <RangeDirective dataSource={defaultData}></RangeDirective>
+    </RangesDirective>
+  </SheetDirective>
+  </SheetsDirective>
+</SpreadsheetComponent>
     </div>
   );
 }
